@@ -9,6 +9,11 @@ const Blog = () => {
     "Title3",
   ])
 
+  // 모달창을 띄우기 위한 상태값
+  let [modal, setmodal] = useState(false);
+  // 모달창에 표시될 제목 글의 인덱스
+  let [modalTitle, setmodalTitle] = useState(0);
+
   const name = ["이름1", "이름2", "이름3"]
 
   return (
@@ -20,7 +25,14 @@ const Blog = () => {
       {
         title.map((item, i)=>{
           return (
-            <div className='list'>
+            <div className='list' onClick={()=>{
+              if(modal && modalTitle === i) {
+                setmodal(false)
+              } else {
+                setmodal(true);
+                setmodalTitle(i)
+              }
+            }}>
               <h4>{item}</h4>
               <p>안녕하세요 저는 {name[i]} 입니다.</p>
               <button>글삭제</button>
@@ -28,16 +40,18 @@ const Blog = () => {
           )
         })
       }
+
+      {modal && <Modal modalTitle={modalTitle} title={title} closeModal={()=> setmodal(false)} />}
     </div>
   )
 }
 
-function Modal(){
+function Modal(props){
   return (
     <div className='modal'>
-      <h4>Title</h4>
+      <h4>{props.title[props.modalTitle]}</h4>
       <p>Content</p>
-      <button>닫기</button>
+      <button onClick={props.closeModal}>닫기</button>
     </div>
   )
 }
