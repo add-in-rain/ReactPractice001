@@ -11,13 +11,19 @@ import Menu2 from './components/Menu2';
 function App() {
   return (
     <div className="App">    
+
+
+
+
+
+
       {/* <Blog/> */}
-      <Header/>
+      {/* <Header/>
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route path='/menu1' element={<h1>menu1 페이지</h1>}/>
         <Route path='/menu2' element={<Menu2/>}/>
-      </Routes>
+      </Routes> */}
 
       {/* <Main/>
       <Cards/> */}
